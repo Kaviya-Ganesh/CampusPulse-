@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Bell, BarChart3, Presentation, Server, Settings2, Plus, Sparkles, AlertCircle } from 'lucide-react';
+import { Calendar, Bell, BarChart3, Presentation, Server, Plus, AlertCircle } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import PropTypes from 'prop-types';
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -75,6 +76,13 @@ function NavItem({ icon: Icon, label, active, onClick }) {
     </button>
   );
 }
+
+NavItem.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  label: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 function BookingTab({ setStatusMsg }) {
   const [formData, setFormData] = useState({
@@ -171,6 +179,10 @@ function BookingTab({ setStatusMsg }) {
   );
 }
 
+BookingTab.propTypes = {
+  setStatusMsg: PropTypes.func.isRequired,
+};
+
 function EventsTab({ setStatusMsg }) {
   const [events, setEvents] = useState([]);
   const [formData, setFormData] = useState({ title: '', date: '', location: '' });
@@ -249,6 +261,10 @@ function EventsTab({ setStatusMsg }) {
     </div>
   );
 }
+
+EventsTab.propTypes = {
+  setStatusMsg: PropTypes.func.isRequired,
+};
 
 function NotificationsTab() {
   const [logs, setLogs] = useState([]);

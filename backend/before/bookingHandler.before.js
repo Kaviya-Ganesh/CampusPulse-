@@ -14,7 +14,7 @@ export const handleBookingBefore = (req, res) => {
 
     try {
         // 2. Inline Logging
-        console.log(`[LOG] BEFORE Refactor - Incoming booking request:`, req.body);
+        console.log(`[LOG] BEFORE Refactor - Incoming booking request received.`);
 
         const { room, date, time, studentName, notificationPref } = req.body;
 
@@ -53,15 +53,15 @@ export const handleBookingBefore = (req, res) => {
         let notificationMsg = '';
         if (notificationPref === 'email') {
              notificationMsg = `Sending EMAIL to ${studentName}: Room ${room} booked on ${date} at ${time}`;
-             console.log(notificationMsg);
+             console.log(`[LOG] Sending EMAIL alert`);
              state.notifications.push({ type: 'EMAIL', message: notificationMsg, timestamp: new Date().toISOString() });
         } else if (notificationPref === 'sms') {
              notificationMsg = `Sending SMS to ${studentName}: Room ${room} booked on ${date} at ${time}`;
-             console.log(notificationMsg);
+             console.log(`[LOG] Sending SMS alert`);
              state.notifications.push({ type: 'SMS', message: notificationMsg, timestamp: new Date().toISOString() });
         } else {
              notificationMsg = `System Alert: No notification preference for ${studentName}`;
-             console.log(notificationMsg);
+             console.log(`[LOG] System Alert`);
              state.notifications.push({ type: 'SYSTEM', message: notificationMsg, timestamp: new Date().toISOString() });
         }
 

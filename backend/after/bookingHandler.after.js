@@ -111,7 +111,7 @@ const withErrorHandling = (handler) => async (req, res) => {
 };
 
 const withLogging = (handler) => async (req, res) => {
-    console.log(`[LOG] AFTER Refactor - Incoming request to ${req.originalUrl}:`, req.body);
+    console.log(`[LOG] AFTER Refactor - Incoming request to ${req.originalUrl} received.`);
     await handler(req, res);
     console.log(`[LOG] AFTER Refactor - Request finished.`);
 };
